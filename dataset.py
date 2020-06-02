@@ -66,6 +66,9 @@ class SnP500Dataset:
 
         assert len(self.train_x) == len(self.train_y)
 
+        print("train_x: ", len(self.train_x))
+        print("train_y: ", len(self.train_y))
+
         self.class_weights = get_class_weights(len(self.train_x), self.train_y)
         print('class_weights', self.class_weights)
 
@@ -163,6 +166,8 @@ class SnP500Dataset:
             assert len(word2vec) == (w_idx + 1)
 
         print('vocab', len(word_freq_dict), '->', final_size)
+        print('word2vec', len(word2vec))
+
 
         most_freq_news_date = \
             sorted(date_freq_dict, key=date_freq_dict.get, reverse=True)[0]
@@ -174,6 +179,7 @@ class SnP500Dataset:
         print('tweet_zero_days', tweet_zero_days)
         print('max_date_len', max_date_len)
         print('max_news_len', max_news_len)
+
         print('tweet time range', date_min, '~', date_max)
 
         return date_min, date_max, max_date_len, max_news_len, \
@@ -385,7 +391,7 @@ class SnP500Dataset:
 
             stock_history = self.stock_dict[stock_name]
 
-            stock_days = len(s)
+            stock_days = len(stock_history)
 
             # if stock_days < self.flags.days:
             #     continue
@@ -443,6 +449,9 @@ class SnP500Dataset:
 
                     ex.append('\n'.join(ex_1))
                     news_lens.append(t_lens)
+                    # print("day_lens",len(day_lens))
+                    # print("news_lens",len(news_lens))
+                # print("days:", len(days))
 
                 # StockNet: at least one tweet
                 if num_empty_tweet_days > 0:
@@ -679,8 +688,14 @@ class SnP500Dataset:
         x = np.array(x, dtype=np.int32)
         x_date_len = np.array(x_date_len, dtype=np.int32)
         x_date_news_len = np.array(x_date_news_len, dtype=np.int32)
+        # print("x", len(x))
+        # print("x_date_len", len(x_date_len))
+        # print("x_date_news_len", len(x_date_news_len))
 
-        return x, x_date_len, x_date_news_len
+        return ("three lens:", len(x), len(x_date_len), len(x_date_news_len))
+        # print("x", len(x))
+        # print("x_date_len", len(x_date_len))
+        # print("x_date_news_len",len(x_date_news_len))
 
 
 def get_class_weights(n_samples, y, num_classes=2):

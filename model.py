@@ -40,7 +40,7 @@ class HAN(tf.keras.Model):
         self.fc_out = tf.keras.layers.Dense(2)
 
     def call(self, x, day_len, news_len, training=False):
-        max_dlen = tf.keras.backend.max(day_len).numpy()
+        max_dlen = tf.keras.backes.numpy()
         max_nlen = tf.keras.backend.max(news_len).numpy()
         x = x[:, :, :max_dlen, :max_nlen]
         news_len = news_len[:, :, :max_dlen]

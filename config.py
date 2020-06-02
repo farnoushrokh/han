@@ -32,8 +32,8 @@ argparser.add_argument("--days", type=int, default=5)  # StockNet
 argparser.add_argument("--max_date_len", type=int, default=40)  # StockNet
 argparser.add_argument("--max_news_len", type=int, default=30)  # StockNet
 argparser.add_argument("--seed", type=int, default=2019)
-argparser.add_argument("--host", type=str,
-                       default=socket.gethostbyname(socket.getfqdn()))
+# argparser.add_argument("--host", type=str,
+#                        default=socket.gethostbyname(socket.getfqdn()))
 argparser.add_argument("--whitelist", type=list, default=[])
 argparser.add_argument("--random_search", type=int, default=0)
 
