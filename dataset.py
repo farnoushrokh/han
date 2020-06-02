@@ -385,7 +385,7 @@ class SnP500Dataset:
 
             stock_history = self.stock_dict[stock_name]
 
-            stock_days = len(stock_history)
+            stock_days = len(s)
 
             # if stock_days < self.flags.days:
             #     continue
