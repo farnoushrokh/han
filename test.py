@@ -5,6 +5,8 @@ import os
 # from bert.tokenization import FullTokenizer
 
 
+print("############ JUST FOR TEST ##############")
+
 class SnP500Dataset:
     def __init__(self, flags):
         self.flags = flags
